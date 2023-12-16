@@ -14,7 +14,7 @@ class Main:
         self.__path = path
         self.__writer = Writer()
         self.__kafka_consumer = Consumer(server=server, topic=topic)
-        self.__kafka_produser = Producer(server=server)
+        # self.__kafka_produser = Producer(server=server)
 
 
     def main(self):
@@ -33,7 +33,7 @@ class Main:
 
 if __name__ == "__main__":
     request = argparse.ArgumentParser(description='Weatherstack scraping and distributed with kafka')
-    request.add_argument('--server', '--s', type=str, default='127.0.0.1:9092', help='Enter your Kafka server[defaulth: 127.0.0.1:9092]')
+    request.add_argument('--server_k', '--sk', type=str, default='127.0.0.1:9092', help='Enter your Kafka server[defaulth: 127.0.0.1:9092]')
     request.add_argument('--topic', '--t', type=str, default='weather', help='Enter your Kafka topic')
     request.add_argument('--path', '--p', type=str, default='data', help='Enter the path if you want to save the scraping results locally')
     request = request.parse_args()
