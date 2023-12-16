@@ -35,7 +35,7 @@ class Logs:
 
     def err(self,response: any, requests: str) -> None:
         logger = logging.getLogger()
-        logger.critical(f"requests: {requests}")
-        logger.critical(f"code: {response.get('code')}")
-        logger.critical(f"type: {response.get('type')}")
-        logger.critical(f"message: {response.get('message')}")
+        logger.error(f"requests: {requests}")
+        logger.error(f"code: {response.get('code')}")
+        logger.error(f"type: {response.get('type')}")
+        logger.error(f"message: {response.get('message')}")
