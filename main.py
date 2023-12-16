@@ -38,7 +38,7 @@ if __name__ == "__main__":
     request.add_argument('--path', '--p', type=str, default='data', help='Enter the path if you want to save the scraping results locally')
     request = request.parse_args()
 
-    main = Main(server=request.server , topic=request.topic, path=request.path)
+    main = Main(server=request.server_k , topic=request.topic, path=request.path)
     main.main()
 
 
