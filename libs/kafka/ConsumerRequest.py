@@ -1,11 +1,9 @@
 from kafka import KafkaConsumer
 
 class Consumer:
-    def __init__(self, server: str) -> None:
-        self.__server = server
-        self.__topic = "city"
-        self.__consumer = KafkaConsumer(self.__topic, bootstrap_servers=[self.__server])
-        pass
+    def __init__(self, server: str, topic: str) -> None:
+        self.__consumer = KafkaConsumer(topic, bootstrap_servers=[server])
+        
 
     def accept(self) -> str:
         return self.__consumer

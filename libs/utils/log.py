@@ -22,8 +22,8 @@ class Logs:
         logger.addHandler(console)
         logger.addHandler(file_log)
 
-    def ex(self, status, page, no) -> None:
+    def ex(self, status: int, offset: int, city: str) -> None:
         logger = logging.getLogger()
-        logger.info(f"page: {page}")
-        logger.info(f"no: {no}")
+        logger.info(f"city: {city}")
+        logger.info(f"offset: {offset}")
         logger.info(f"status: {status}")
