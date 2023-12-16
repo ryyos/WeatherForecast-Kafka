@@ -20,11 +20,11 @@ class Main:
         try:
             while True:
                 for message in self.__kafka_consumer.accept():
-                    results: Response = self.__parser.fetch_data(city=message.value.decode("utf-8"))
+                    results: Response = self.__parser.fetch_data(location=message.value.decode("utf-8"))
 
-                    self.__writer.ex(path=f'{self.__path}/{message.value.decode("utf-8")}.json', content=results.json())
-
-                    self.__logs.ex(city=message.value.decode("utf-8"), status=200, offset=message.offset)
+                    if results != 404:
+                        self.__writer.ex(path=f'{self.__path}/{message.value.decode("utf-8")}.json', content=results.json())
+                        self.__logs.info(requests=message.value.decode("utf-8"), status=results.status_code, offset=message.offset, response=results.json())
                     
 
         except KeyboardInterrupt:

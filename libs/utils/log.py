@@ -1,5 +1,6 @@
 import logging
 from datetime import datetime as time
+from icecream import ic
 
 class Logs:
     def __init__(self) -> None:
@@ -22,8 +23,19 @@ class Logs:
         logger.addHandler(console)
         logger.addHandler(file_log)
 
-    def ex(self, status: int, offset: int, city: str) -> None:
+    def info(self, offset: int, status: int, requests: str, response: any) -> None:
         logger = logging.getLogger()
-        logger.info(f"city: {city}")
+        logger.info(f"requests: {requests}")
         logger.info(f"offset: {offset}")
         logger.info(f"status: {status}")
+        logger.info(f"locations: {response['location'].get('name')}")
+        logger.info(f"type: {response['location'].get('type')}")
+        logger.info(f"Latitude: {response['location'].get('lat')}")
+        logger.info(f"longitude : {response['location'].get('lon')}")
+
+    def err(self,response: any, requests: str) -> None:
+        logger = logging.getLogger()
+        logger.critical(f"requests: {requests}")
+        logger.critical(f"code: {response.get('code')}")
+        logger.critical(f"type: {response.get('type')}")
+        logger.critical(f"message: {response.get('message')}")
