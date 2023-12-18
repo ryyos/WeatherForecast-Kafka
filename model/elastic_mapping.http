@@ -1,0 +1,15 @@
+PUT <Your_Elastic_Host>/<your_index>
+{
+  "mappings": {
+     "dynamic_templates": [
+        {
+           "numbers": {
+              "match_mapping_type": "long",
+              "mapping": {
+                 "type": "float"
+              }
+           }
+        }
+     ]
+  }
+}
